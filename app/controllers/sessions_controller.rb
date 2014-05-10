@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(request.env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to root_path
+    redirect_to root_path, notice: "Welcome to Beat Group.r -- #{user.name}"
   end
 
   def destroy

@@ -1,7 +1,7 @@
 <%= form_tag('/rooms/search', method: 'GET') do %>
 
   <div class="search-form">
-    <%= text_field_tag :search %>
+    <%= text_field_tag :search, nil, placeholder: 'Case Sensitive' %>
     <%= submit_tag "Search Room", class: 'button' %>
   </div>
 

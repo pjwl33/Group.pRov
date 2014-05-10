@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :signed_in?, :current_user
 
-  private
-
   #checking for user signed in
   def signed_in?
     true if session[:user_id]
