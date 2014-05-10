@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CollaboMusicApp</title>
+  <title>Beats Group.r</title>
   <link rel="icon" type="image/png" href="http://www.mikewaltonproductions.com/newsite/wp-content/uploads/2011/06/Music-Note.png">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="fixed_header">
+    <div class="header_content">
+      <div class="logo">
+        <h1><%= link_to "Beats Group.r", root_path %></h1>
+      </div>
+      <ul class="nav">
+        <li><i class="fa fa-user"></i><%= link_to "Account", rooms_path %></li>
+        <li><i class="fa fa-sign-out"></i><%= link_to "Sign Out", signout_path %></li>
+        <li><i class="fa fa-usd"></i><%= link_to "Donate", "https://www.paypal.com/home", target: "_blank" %></li>
+      </ul>
+    </div>
+  </div>
 
-<%= yield %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= yield %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 </body>
 </html>

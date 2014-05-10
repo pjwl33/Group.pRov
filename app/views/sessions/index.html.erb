@@ -1,0 +1,8 @@
+<h1>Group Beats</h1>
+
+<% if signed_in? %>
+  <%= link_to "Let's Make Some Beats!", rooms_path %>
+<% else %>
+  <h3><%= link_to "Sign in with Facebook", "/auth/facebook" %></h3>
+<% end %>
+
