@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   get '/auth/failure' => redirect('/')
 
-  get '/rooms' => 'rooms#index'
   post '/rooms' => 'rooms#create'
+  get '/rooms' => 'rooms#index'
+  get '/rooms/search' => 'rooms#search'
+  get '/rooms/:id' => 'rooms#show'
 
   get '/signout' => 'sessions#destroy', as: 'signout'
 

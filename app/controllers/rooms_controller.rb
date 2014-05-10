@@ -4,13 +4,26 @@ class RoomsController < ApplicationController
     @room = Room.new
   end
 
-  def show
-    @room = Room.find(params[:id])
+  def search
+    room = Room.find_by(name: params[:search])
+    if room
+      redirect_to "/rooms/#{room.id}"
+    else
+      redirect_to rooms_path, notice: "Looks like room '#{params[:search]}' doesn't exist -- try creating it!"
+    end
   end
 
   def create
-    @room = Room.create(room_params)
-    redirect_to room_path @room
+    room = Room.create(room_params)
+    if room.save
+      redirect_to "/rooms/#{room.id}"
+    else
+      redirect_to rooms_path, notice: "Looks like that room already exists -- try a different name!"
+    end
+  end
+
+  def show
+    @room = Room.find(params[:id])
   end
 
   private
