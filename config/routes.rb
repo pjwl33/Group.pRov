@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/auth/failure' => redirect('/')
 
   post '/rooms' => 'rooms#create'
+  post '/tracks' => 'tracks#create'
   get '/rooms' => 'rooms#index'
   get '/rooms/search' => 'rooms#search'
   get '/rooms/:id' => 'rooms#show'

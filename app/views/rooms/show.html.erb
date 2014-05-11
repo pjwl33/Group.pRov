@@ -1,1 +1,12 @@
 <h1><%= @room.name %></h1>
+
+<h3>Select Your Instrument</h3>
+<select name="instrument" id="instrument-list">
+  <option value="keyboard">Keyboard</option>
+  <option value="drums">Drums</option>
+  <option value="hip-hop-beats">Hip-Hop Beats</option>
+</select>
+
+<%= javascript_tag do %>
+  instrument();
+<% end %>
