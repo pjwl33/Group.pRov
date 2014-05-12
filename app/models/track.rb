@@ -1,6 +1,7 @@
 class Track < ActiveRecord::Base
 
   belongs_to :user
-  belongs_ot :room
+  belongs_to :room
+  validates_presence_of :sequence
 
 end
