@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Beat Group.r</title>
+  <title>#workingTitle</title>
   <link rel="icon" type="image/png" href="http://www.mikewaltonproductions.com/newsite/wp-content/uploads/2011/06/Music-Note.png">
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.0-rc.15.min.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
   <%= flash[:notice] %>
   <div class="fixed_header">
     <div class="header_content">
       <div class="logo">
-        <h1><%= link_to "Beat Group.r", root_path %></h1>
+        <h1><%= link_to "#workingTitle", root_path %></h1>
       </div>
       <ul class="nav">
         <li><i class="fa fa-user"></i><%= link_to "Account", rooms_path %></li>
@@ -22,7 +24,6 @@
   </div>
   <hr>
   <%= yield %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 </body>
 </html>
