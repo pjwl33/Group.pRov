@@ -11,8 +11,10 @@ GA WDI Final Project - a jam-session room, where users can collaboratively creat
 
 * AWS S3 - music file storage and fetching
 * Facebook OAuth
-* Web Audio API 
-* Backbone.js
+* Web Audio API
+* [Matt Diamond's- Recorder.js](https://github.com/mattdiamond/Recorderjs)
+* [Stuart Memo's - QwertyHancock.js](http://stuartmemo.com/qwerty-hancock/)
+* [Chris Wilson's - AudioContext MonkeyPatch.js](https://github.com/cwilso/AudioContext-MonkeyPatch)
 * Underscore.js
 
 ####Entity Relationship Diagram

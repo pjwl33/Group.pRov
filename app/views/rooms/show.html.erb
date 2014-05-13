@@ -1,16 +1,14 @@
 <h1><%= @room.name %></h1>
 
 <h3>Select Your Instrument</h3>
-<select name="instrument" id="instrument-list">
-  <option value="keyboard">Keyboard</option>
-  <option value="drums">Drums</option>
-  <option value="hip-hop-beats">Hip-Hop Beats</option>
-</select>
+<input type="radio" id="piano" onclick="instrument('piano')">Piano
+<input type="radio" id="beats" onclick="instrument('beats')">Beats
+
 
 <div id="keyboard"></div>
+<div id="sounds"></div>
 
-<%= javascript_tag do %>
-  //instrument("keyboard");
-  tester();
-<% end %>
+
+
+
 
