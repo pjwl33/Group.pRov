@@ -15,6 +15,7 @@ gem 'twitter'
 gem "omniauth-facebook"
 gem 'aws-sdk'
 gem 'rest-client'
+gem 'quiet_assets'
 
 group :development do
   gem 'pry'
@@ -22,6 +23,7 @@ group :development do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rack-mini-profiler'
 end
 
 group :development, :test do

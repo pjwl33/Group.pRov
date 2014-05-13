@@ -16,6 +16,4 @@
 //= require underscore
 //= require backbone
 //= require monkeyPatch
-//= require recorder
-//= require recorderWorker
 //= require_tree .
