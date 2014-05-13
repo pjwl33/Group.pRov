@@ -9,17 +9,26 @@ function instrument(type) {
   }
   for (i = 0; i < soundFiles.length; i++) {
     var audio = new Audio();
-    audio.src = 'https://s3.amazonaws.com/s3-ex-bucket/' + soundFiles[i];
+    audio.src = 'https://s3.amazonaws.com/s3-ex-bucket/Piano' + soundFiles[i];
     audio.id = soundFiles[i];
     var source = context.createMediaElementSource(audio);
     source.connect(context.destination);
     $('#sounds').append(audio);
     $(document).keydown(function(e) {
-      if (e.keyCode == keyCodes[i]) {
-        document.getElementById(soundFiles[i]).play();
-        return false;
+      if (e.keyCode == 81) {
+        document.getElementById('piano_c.wav').play();
+        // return false;
+      } else if (e.keyCode == 50) {
+        document.getElementById('piano_cs.wav').play();
       }
     });
   }
 }
 
+function tester() {
+  var context = new AudioContext;
+  var oscillator = context.createOscillator();
+  oscillator.frequency.value = 200;
+  oscillator.connect(context.destination);
+  // oscillator.start(0);
+}
