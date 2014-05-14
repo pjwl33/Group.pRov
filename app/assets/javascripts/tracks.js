@@ -1,7 +1,21 @@
 var sequence = function (event) {
-  sequence.data.push(event);
+  if (event.keyCode >= 65 && event.keyCode <= 89) {
+    sequence.data.push(event);
+  }
 };
 sequence.data = [];
+
+function instType() {
+  var instrument;
+  if ($('.room-name').text().search("Piano") >= 0) {
+    instrument = "piano";
+  } else if ($('.room-name').text().search("Beats") >= 0) {
+    instrument = "beats";
+  } else if ($('.room-name').text().search("Drums") >= 0) {
+    instrument = "drums";
+  }
+  return instrument;
+}
 
 function startRecording() {
   console.log("Recording...");
@@ -21,27 +35,15 @@ function stopRecording() {
     dataType: 'json',
     data: {
       room: $('.room-name').attr('id'),
-      instrument: checkInstrument(),
+      instrument: instType(),
       sequence: JSON.stringify(keyTimes)
     }
   }).done(function(data) {
-    console.log(data);
+    alert(data.msg);
     addTrack(data);
     document.removeEventListener('keydown', sequence);
     sequence.data = [];
   });
-}
-
-function checkInstrument() {
-  var instrument;
-  if ($('.room-name').text().search("Piano") >= 0) {
-    instrument = "Piano";
-  } else if ($('.room-name').text().search("Beats") >= 0) {
-    instrument = "Beats";
-  } else if ($('.room-name').text().search("Drums") >= 0) {
-    instrument = "Drums";
-  }
-  return instrument;
 }
 
 function addTrack(data) {
@@ -53,12 +55,37 @@ function addTrack(data) {
   playButton.click(playTrack.bind(this, data.object));
   stopButton.click(stopTrack.bind(this, data.object));
   loopButton.click(loopTrack.bind(this, data.object));
-  trackList.append(listItem.append(playButton).append(stopButton).append(loopButton));
+  if (data.object.instrument !== null) {
+    trackList.append(listItem.append(playButton).append(stopButton).append(loopButton));
+  }
 }
 
 function playTrack(track) {
   console.log("I'm playing!");
-  console.log(track.sequence);
+  var audio = new Audio();
+  // audio.src =
+  audio.id = "track_" + track.id;
+  var source = context.createMediaElementSource(audio);
+  source.connect(context.destination);
+  var intervals = [];
+  var intString = (track.sequence.slice(1, -1).split("["));
+  for (var i = 0; i < intString.length; i++) {
+    if (intString[i] !== "") {
+      var pairs = [];
+      var keyPress = intString[i].slice(0, 2);
+      var timeStamp = intString[i].split(",")[1].slice(0, -1);
+      pairs.push(keyPress, timeStamp);
+      intervals.push(pairs);
+    }
+  }
+  function playNotes(key, int) {
+    setTimeout(function() { console.log(key);}, int);
+  }
+  for (var j = 0; j < intervals.length; j++) {
+    var key = intervals[j][0];
+    var timeInt = intervals[j][1] - intervals[0][1];
+    playNotes(key, timeInt);
+  }
 }
 
 function stopTrack(track) {

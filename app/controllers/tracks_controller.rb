@@ -1,5 +1,7 @@
 class TracksController < ApplicationController
 
+  before_action :current_user
+
   def create
     @room = Room.find(params[:room])
     track = @room.tracks.create({
@@ -7,7 +9,12 @@ class TracksController < ApplicationController
       sequence: params[:sequence],
       instrument: params[:instrument]
       })
-    return_data = { object: track, user: current_user.name }
+    if track.save
+      alert_msg = "Track successfully saved!"
+    else
+      alert_msg = "Error saving track - make sure an instrument is picked!"
+    end
+    return_data = { object: track, user: current_user.name, msg: alert_msg }
 
     respond_to do |format|
       format.html { redirect_to "/rooms/#{@room.id}"}

@@ -1,5 +1,7 @@
 class RoomsController < ApplicationController
 
+  before_action :current_user
+
   def index
     @room = Room.new
 
@@ -32,6 +34,8 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    user_ids = @room.tracks.pluck(:user_id).uniq.sort!
+    @users = user_ids.map { |id| User.find(id) }
   end
 
   private

@@ -2,6 +2,10 @@ body {
   background-image: url('<%= asset_path('purty_wood.png') %>');
   background-attachment: fixed;
   font-family: 'Nunito', sans-serif;
+  color: #333;
+}
+
+h1, h2, h3, h4, {
   color: #8C001A;
 }
 
@@ -13,8 +17,9 @@ body {
 .right { float: right; }
 .left { float: left; }
 i { width: 20px; color: #F6FA9C; }
-.wrap { width: 980px; margin: 0 auto; padding-top: 90px; }
+.wrap { width: 980px; margin: 0 auto; padding-top: 90px; display: table; }
 a { text-decoration: none; color: #8C001A; }
+.footer { position: fixed;}
 
 .fixed_header {
   width: 100%;
@@ -29,7 +34,7 @@ a { text-decoration: none; color: #8C001A; }
     margin: 0 auto;
     .logo {
       float: left;
-      background-image: url('<%= asset_path('logo.png') %>');
+      background-image: url('<%= asset_path('headphones.png') %>');
       background-repeat: no-repeat;
       background-size: 40px 40px;
       background-position: left center;
@@ -69,11 +74,7 @@ a { text-decoration: none; color: #8C001A; }
 #room-tracks {
   margin-top: 10px;
   i { color: #8C001A; }
-  h3 {
-    text-align: left;
-  }
   li {
     padding: 5px;
-    float: left;
   }
 }
