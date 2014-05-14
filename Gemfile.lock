@@ -27,17 +27,12 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    addressable (2.3.6)
     arel (5.0.1.20140414130214)
-    aws-sdk (1.39.0)
-      json (~> 1.4)
-      nokogiri (>= 1.4.4)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    buftok (0.2.0)
     builder (3.2.2)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -60,16 +55,12 @@ GEM
     dotenv-deployment (0.0.2)
     dotenv-rails (0.11.1)
       dotenv (= 0.11.1)
-    equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.0.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     hashie (2.1.1)
     hike (1.2.3)
-    http (0.5.0)
-      http_parser.rb
-    http_parser.rb (0.6.0)
     i18n (0.6.9)
     jbuilder (2.0.7)
       activesupport (>= 3.0.0, < 5)
@@ -83,8 +74,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    memoizable (0.4.2)
-      thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.3)
@@ -92,10 +81,8 @@ GEM
     multi_json (1.10.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    naught (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
-    oauth (0.4.7)
     oauth2 (0.9.3)
       faraday (>= 0.8, < 0.10)
       jwt (~> 0.1.8)
@@ -107,17 +94,11 @@ GEM
       rack (~> 1.0)
     omniauth-facebook (1.6.0)
       omniauth-oauth2 (~> 1.1)
-    omniauth-oauth (1.0.1)
-      oauth
-      omniauth (~> 1.0)
     omniauth-oauth2 (1.1.2)
       faraday (>= 0.8, < 0.10)
       multi_json (~> 1.3)
       oauth2 (~> 0.9.3)
       omniauth (~> 1.2)
-    omniauth-twitter (1.0.1)
-      multi_json (~> 1.3)
-      omniauth-oauth (~> 1.0)
     pg (0.17.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
@@ -156,8 +137,6 @@ GEM
     rake (10.3.1)
     rdoc (4.1.1)
       json (~> 1.4)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rspec-collection_matchers (0.0.4)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.0.0.beta2)
@@ -189,7 +168,6 @@ GEM
       rdoc (~> 4.0, < 5.0)
     shoulda-matchers (2.5.0)
       activesupport (>= 3.0.0)
-    simple_oauth (0.2.0)
     slop (3.5.0)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -208,17 +186,6 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (2.2.2)
       coffee-rails
-    twitter (5.8.0)
-      addressable (~> 2.3)
-      buftok (~> 0.2.0)
-      equalizer (~> 0.0.9)
-      faraday (~> 0.9.0)
-      http (~> 0.5.0)
-      http_parser.rb (~> 0.6.0)
-      json (~> 1.8)
-      memoizable (~> 0.4.0)
-      naught (~> 1.0)
-      simple_oauth (~> 0.2.0)
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
     uglifier (2.5.0)
@@ -231,7 +198,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk
   better_errors
   binding_of_caller
   capybara
@@ -240,7 +206,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook
-  omniauth-twitter
   pg
   pry
   pry-rails
@@ -248,11 +213,9 @@ DEPENDENCIES
   rack-mini-profiler
   rails (= 4.1.0)
   rails_12factor
-  rest-client
   rspec-rails (~> 3.0.0.beta)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   shoulda-matchers
   turbolinks
-  twitter
   uglifier (>= 1.3.0)

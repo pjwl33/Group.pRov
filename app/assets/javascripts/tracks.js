@@ -62,11 +62,6 @@ function addTrack(data) {
 
 function playTrack(track) {
   console.log("I'm playing!");
-  var audio = new Audio();
-  // audio.src =
-  audio.id = "track_" + track.id;
-  var source = context.createMediaElementSource(audio);
-  source.connect(context.destination);
   var intervals = [];
   var intString = (track.sequence.slice(1, -1).split("["));
   for (var i = 0; i < intString.length; i++) {
@@ -79,7 +74,16 @@ function playTrack(track) {
     }
   }
   function playNotes(key, int) {
-    setTimeout(function() { console.log(key);}, int);
+    setTimeout(function() {
+      console.log(key);
+      var audio = new Audio();
+      audio.src = "?";
+      audio.id = "track_" + track.id;
+      var source = context.createMediaElementSource(audio);
+      source.connect(context.destination);
+      $('#playbacks').append(audio);
+      $('#' + audio.id).play();
+    }, int);
   }
   for (var j = 0; j < intervals.length; j++) {
     var key = intervals[j][0];
