@@ -1,17 +1,79 @@
 body {
   background-image: url('<%= asset_path('purty_wood.png') %>');
   background-attachment: fixed;
-  font-family: 'Helvetica';
-  color: #555;
-  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  color: #8C001A;
 }
 
-a {
-  text-decoration: none;
-  color: #551111;
+.clear { clear:both; }
+.center { text-align: center; }
+.button { border: none; }
+.left_col { width: 680px; float: left; }
+.right_col { width: 250px; float: right; }
+.right { float: right; }
+.left { float: left; }
+i { width: 20px; color: #F6FA9C; }
+.wrap { width: 980px; margin: 0 auto; padding-top: 90px; }
+a { text-decoration: none; color: #8C001A; }
+
+.fixed_header {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(140, 0, 26, 0.5);
+  z-index: 2;
+  .header_content {
+    width: 980px;
+    margin: 0 auto;
+    .logo {
+      float: left;
+      background-image: url('<%= asset_path('logo.png') %>');
+      background-repeat: no-repeat;
+      background-size: 40px 40px;
+      background-position: left center;
+      h1 {
+        margin: 0;
+        padding-left: 50px;
+        line-height: 60px;
+        font-size: 26px;
+      }
+    }
+    .nav {
+      margin: 0;
+      float: right;
+      li {
+        display: inline;
+        line-height: 60px;
+        margin-left: 10px;
+      }
+    }
+    a {
+      color: #F6FA9C;
+    }
+  }
 }
 
 #keyboard {
-  margin-left: 375px;
-  margin-top: 100px;
+  margin-top: 55px;
+}
+
+#instrument-list {
+  li {
+    display: inline-block;
+    padding: 5px;
+  }
+}
+
+#room-tracks {
+  margin-top: 10px;
+  i { color: #8C001A; }
+  h3 {
+    text-align: left;
+  }
+  li {
+    padding: 5px;
+    float: left;
+  }
 }

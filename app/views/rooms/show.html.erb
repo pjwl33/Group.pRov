@@ -1,14 +1,32 @@
-<h1><%= @room.name %></h1>
+<div class="left_col">
+  <h1 class="room-name" id="<%= @room.id %>"><%= @room.name %></h1>
 
-<h3>Select Your Instrument</h3>
-<input type="radio" id="piano" onclick="instrument('piano')">Piano
-<input type="radio" id="beats" onclick="instrument('beats')">Beats
+  <ul id="instrument-list">
+    <h3>Select Your Instrument</h3>
+    <li><input type="radio" onclick="instrument('piano')">Piano</li>
+    <li><input type="radio" onclick="instrument('beats')">Beats</li>
+    <li><input type="radio" onclick="instrument('drums')">Drums</li>
+  </ul>
 
+  <div id="keyboard"></div>
+  <div id="sounds"></div>
+</div>
 
-<div id="keyboard"></div>
-<div id="sounds"></div>
+<div class="right_col">
+  <div id="record-tracks" class="right">
+    <button class="button" id="record" onclick="startRecording()">Start Recording</button>
+    <button class="button" id="stop" onclick="stopRecording()">Stop Recording</button>
+  </div>
 
-
-
-
-
+  <div id="tracks" class="right clear">
+    <ul id="room-tracks"><h3>Tracks</h3>
+      <% @room.tracks.each do |track| %>
+          <li>Track #: <%= track.id %>
+            <i class="fa fa-play" id="play-track_<%= track.id %>" onclick="playTrack(<%= track.to_json %>)"></i>
+            <i class="fa fa-stop" id="stop-track_<%= track.id %>" onclick="stopTrack(<%= track.to_json %>)"></i>
+            <i class="fa fa-refresh" id="loop-track_<%= track.id %>" onclick="loopTrack(<%= track.to_json %>)"></i>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

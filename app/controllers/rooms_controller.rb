@@ -2,6 +2,14 @@ class RoomsController < ApplicationController
 
   def index
     @room = Room.new
+
+    rooms_ids = current_user.tracks.pluck(:room_id).uniq.sort!
+    @rooms = rooms_ids.map { |id| Room.find(id) }
+
+    respond_to do |format|
+      format.html { render 'index' }
+      format.json { render json: @rooms.to_json }
+    end
   end
 
   def search

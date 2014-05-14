@@ -7,4 +7,8 @@
 <%= render "search" %>
 
 <h3>Music Rooms Contributed To</h3>
-<ul></ul>
+<ul id="contributed-rooms">
+  <% @rooms.each do |room| %>
+    <li><%= link_to "#{room.name}", "/rooms/#{room.id}" %></li>
+  <% end %>
+</ul>

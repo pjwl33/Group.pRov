@@ -16,4 +16,5 @@
 //= require underscore
 //= require backbone
 //= require monkeyPatch
+//= require qwertyHancock
 //= require_tree .

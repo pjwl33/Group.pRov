@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140510220249) do
 
   create_table "tracks", force: true do |t|
     t.string   "sequence"
+    t.string   "instrument"
     t.integer  "user_id"
     t.integer  "room_id"
     t.datetime "created_at"

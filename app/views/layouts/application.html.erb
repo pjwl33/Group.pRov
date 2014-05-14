@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>#workingTitle</title>
-  <link rel="icon" type="image/png" href="http://www.mikewaltonproductions.com/newsite/wp-content/uploads/2011/06/Music-Note.png">
-  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.0-rc.15.min.js"></script>
+  <title>Group.pRov</title>
+  <link rel="icon" type="image/png" href="http://vthessdotcom.files.wordpress.com/2013/12/music-notes-in-circle.jpg"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= flash[:notice] %>
   <div class="fixed_header">
     <div class="header_content">
       <div class="logo">
-        <h1><%= link_to "#workingTitle", root_path %></h1>
+        <h1><%= link_to "Group.pRov", root_path %></h1>
       </div>
       <ul class="nav">
-        <li><i class="fa fa-user"></i><%= link_to "Account", rooms_path %></li>
-        <li><i class="fa fa-sign-out"></i><%= link_to "Sign Out", signout_path %></li>
-        <li><i class="fa fa-usd"></i><%= link_to "Donate", "https://www.paypal.com/home", target: "_blank" %></li>
+        <li><i class="fa fa-music"></i><%= link_to "Account", rooms_path %></li>
+        <% if signed_in? %>
+          <li><i class="fa fa-sign-out"></i><%= link_to "Sign Out", signout_path %></li>
+        <% else %>
+          <li><i class="fa fa-facebook"></i><%= link_to "Sign In with Facebook", "auth/facebook" %></li>
+        <% end %>
+        <li><i class="fa fa-money"></i><%= link_to "Donate", "https://www.paypal.com/home", target: "_blank" %></li>
       </ul>
     </div>
   </div>
-  <hr>
-  <%= yield %>
+
+  <div class="wrap">
+    <%= flash[:notice] %>
+    <%= yield %>
+  </div>
 
 </body>
 </html>

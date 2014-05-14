@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/rooms' => 'rooms#index'
   get '/rooms/search' => 'rooms#search'
   get '/rooms/:id' => 'rooms#show'
+  get '/tracks' => 'tracks#index'
 
   get '/signout' => 'sessions#destroy', as: 'signout'
 
