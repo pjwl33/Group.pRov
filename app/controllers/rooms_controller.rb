@@ -38,6 +38,19 @@ class RoomsController < ApplicationController
     @users = user_ids.map { |id| User.find(id) }
   end
 
+  def get_tracks
+    # binding.pry
+    room = Room.find(params[:id])
+    user_ids = room.tracks.pluck(:user_id).uniq.sort!
+    users = user_ids.map { |id| User.find(id) }
+
+    return_data = { users: users, tracks: room.tracks }
+    respond_to do |format|
+      format.html { redirect_to rooms_path }
+      format.json { render json: return_data.to_json }
+    end
+  end
+
   private
   def room_params
     params[:room].permit(:name, :created_at, :updated_at)

@@ -1,0 +1,80 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/pjwl/Projects/collabo_music_app/app/models/room.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/models/track_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        2,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/app/models/track.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/models/user_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        1,
+        1,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/app/models/user.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1400098772
+  }
+}

@@ -31,7 +31,7 @@ function stopRecording() {
   console.log(keyTimes);
   $.ajax({
     url: '/tracks',
-    method: 'post',
+    method: 'POST',
     dataType: 'json',
     data: {
       room: $('.room-name').attr('id'),
@@ -40,7 +40,7 @@ function stopRecording() {
     }
   }).done(function(data) {
     alert(data.msg);
-    addTrack(data);
+    addTrack(data.object);
     document.removeEventListener('keydown', sequence);
     sequence.data = [];
   });
@@ -48,20 +48,19 @@ function stopRecording() {
 
 function addTrack(data) {
   var trackList = $('#room-tracks');
-  var playButton = $('<i>').addClass('fa fa-play').attr('id', 'play_track_' + data.object.id);
-  var stopButton = $('<i>').addClass('fa fa-stop').attr('id', 'stop_track_' + data.object.id);
-  var loopButton = $('<i>').addClass('fa fa-refresh').attr('id', 'loop_track_' + data.object.id);
-  var listItem = $('<li>').text("Track #: " + data.object.id);
-  playButton.click(playTrack.bind(this, data.object));
-  stopButton.click(stopTrack.bind(this, data.object));
-  loopButton.click(loopTrack.bind(this, data.object));
-  if (data.object.instrument !== null) {
+  var playButton = $('<i>').addClass('fa fa-play').attr('id', 'play_track_' + data.id);
+  var stopButton = $('<i>').addClass('fa fa-stop').attr('id', 'stop_track_' + data.id);
+  var loopButton = $('<i>').addClass('fa fa-refresh').attr('id', 'loop_track_' + data.id);
+  var listItem = $('<li>').text("Track #: " + data.id);
+  playButton.click(playTrack.bind(this, data));
+  stopButton.click(stopTrack.bind(this, data));
+  loopButton.click(loopTrack.bind(this, data));
+  if (data.instrument !== null) {
     trackList.append(listItem.append(playButton).append(stopButton).append(loopButton));
   }
 }
 
-function playTrack(track) {
-  console.log("I'm playing!");
+function trackSequence(track) {
   var intervals = [];
   var intString = (track.sequence.slice(1, -1).split("["));
   for (var i = 0; i < intString.length; i++) {
@@ -73,31 +72,61 @@ function playTrack(track) {
       intervals.push(pairs);
     }
   }
-  function playNotes(key, int) {
-    setTimeout(function() {
-      console.log(key);
-      var audio = new Audio();
-      audio.src = "?";
-      audio.id = "track_" + track.id;
-      var source = context.createMediaElementSource(audio);
-      source.connect(context.destination);
-      $('#playbacks').append(audio);
-      $('#' + audio.id).play();
-    }, int);
+  return intervals;
+}
+
+function getSound(keyValue, keyNotePairs) {
+  for (var i = 0; i < keyNotePairs.length; i++) {
+    if (keyNotePairs[i].key == keyValue) {
+      return keyNotePairs[i].sound;
+    }
   }
-  for (var j = 0; j < intervals.length; j++) {
-    var key = intervals[j][0];
-    var timeInt = intervals[j][1] - intervals[0][1];
-    playNotes(key, timeInt);
+}
+
+function playNotes(key, int, instrument, playType) {
+  setTimeout(function() {
+    var sound;
+    if (instrument == "piano") {
+      sound = getSound(key, piano);
+    } else if (instrument == "beats") {
+      sound = getSound(key, beats);
+    } else if (instrument == "drums") {
+      sound = getSound(key, drums);
+    }
+    var audio = new Audio();
+    var source = context.createMediaElementSource(audio);
+    audio.src = 'https://s3.amazonaws.com/s3-ex-bucket/' + sound;
+    source.connect(context.destination);
+    if (playType == "play") {
+      audio.play();
+    } else if (playType == "loop") {
+      // audio.loop = true;
+      // audio.play(this.src);
+    }
+  }, int);
+}
+
+function playTrack(track) {
+  console.log("I'm playing!");
+  var intervals = trackSequence(track);
+  for (var i = 0; i < intervals.length; i++) {
+    var key = intervals[i][0];
+    var timeInt = intervals[i][1] - intervals[0][1];
+    playNotes(key, timeInt, track.instrument, "play");
   }
 }
 
 function stopTrack(track) {
-  console.log("Chillin'...");
+  console.log("Staph...");
 }
 
 function loopTrack(track) {
   console.log("Round and around");
+  var intervals = trackSequence(track);
+  for (var i = 0; i < intervals.length; i++) {
+    var key = intervals[i][0];
+    var timeInt = intervals[i][1] - intervals[0][1];
+    playNotes(key, timeInt, track.instrument, "loop");
+  }
 }
-
 

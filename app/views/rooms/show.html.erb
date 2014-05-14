@@ -15,7 +15,6 @@
 
   <div id="keyboard"></div>
   <div id="sounds"></div>
-  <div id="playbacks"></div>
 </div>
 
 <div class="right_col">
@@ -39,4 +38,9 @@
     </ul>
   </div>
 </div>
+
+<%= javascript_tag do %>
+  getTracks(<%= @room.id.to_json %>);
+  setInterval(getTracks, 10000, <%= @room.id.to_json %>);
+<% end %>
 
