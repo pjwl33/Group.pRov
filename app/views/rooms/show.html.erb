@@ -27,6 +27,7 @@
 
   <div id="tracks" class="clear">
     <h3>Tracks</h3>
+    <button class="button" id="play-select" onclick="playSelect()">Play Selections</button>
     <ul id="room-tracks">
     </ul>
   </div>
@@ -34,6 +35,6 @@
 
 <%= javascript_tag do %>
   getTracks(<%= @room.id %>);
-  setInterval(getTracks, 10000, <%= @room.id %>);
+  setInterval(getTracks, 15000, <%= @room.id %>);
 <% end %>
 

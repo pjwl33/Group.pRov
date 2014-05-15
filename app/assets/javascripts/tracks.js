@@ -39,15 +39,16 @@ function stopRecording() {
 //ADDING EACH TRACK TO BROWSER WITH PLAY FUNCTIONALITIES
 function addTrack(track) {
   var trackList = $('#room-tracks');
-  var playButton = $('<i>').addClass('fa fa-play').attr('id', 'play_track_' + track.id);
-  var stopButton = $('<i>').addClass('fa fa-stop').attr('id', 'stop_track_' + track.id);
-  var loopButton = $('<i>').addClass('fa fa-refresh').attr('id', 'loop_track_' + track.id);
-  var listItem = $('<li>').text("Track #" + track.id + ": ");
+  var selectTag = $('<input>').attr('type', 'checkbox').attr('checked', 'checked');
+  var playButton = $('<i>').addClass('fa fa-play');
+  var stopButton = $('<i>').addClass('fa fa-stop');
+  var loopButton = $('<i>').addClass('fa fa-refresh');
+  var listItem = $('<li>').attr('id', 'track_' + track.id).text("Track #" + track.id + ": ");
   playButton.click(trackFxn.bind(this, track, "play"));
   stopButton.click(trackFxn.bind(this, track, "stop"));
   loopButton.click(trackFxn.bind(this, track, "loop"));
   if (track.instrument !== null) {
-    trackList.append(listItem.append(playButton).append(stopButton).append(loopButton));
+    trackList.append(listItem.append(playButton).append(stopButton).append(loopButton).append(selectTag));
   }
 }
 
@@ -135,4 +136,15 @@ function calcInts(pairs) {
     }
   }
   return result;
+}
+
+//PLAYING ALL/SELECTIONS
+function playSelect() {
+  var roomTracks = $('#room-tracks').children();
+  for (var i = 0; i < roomTracks.length; i++) {
+    //IMPLEMENT CHECKBOX FXN
+    if (roomTracks.eq(i).children().eq(3)) {
+      roomTracks.eq(i).children().eq(0).click();
+    }
+  }
 }

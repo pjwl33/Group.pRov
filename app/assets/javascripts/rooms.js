@@ -51,7 +51,7 @@ function playSound(key, sound) {
 function stopSound(key, sound) {
   if (this.event.keyCode == key) {
     var note = document.getElementsByClassName(sound)[0];
-    note.pause();
+    note.fadeOut();
     note.currentTime = 0;
   }
 }
