@@ -6,7 +6,6 @@ var drums = [{key: 65, sound:'Kicks/Bmb_K.wav'}, {key: 83, sound:'Kicks/Bnc_K.wa
 
 //FETCHING TRACKS AND USERS THAT HAVE BEEN CONTRIBUTED TO THE ROOM
 function getTracks(roomId) {
-  console.log(roomId);
   $.ajax({
     url: '/get_tracks',
     method: 'GET',
