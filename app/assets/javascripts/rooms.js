@@ -6,6 +6,7 @@ var drums = [{key: 65, sound:'Kicks/Bmb_K.wav'}, {key: 83, sound:'Kicks/Bnc_K.wa
 
 //FETCHING TRACKS AND USERS THAT HAVE BEEN CONTRIBUTED TO THE ROOM
 function getTracks(roomId) {
+  console.log(roomId);
   $.ajax({
     url: '/get_tracks',
     method: 'GET',
@@ -47,7 +48,7 @@ function playSound(key, sound) {
     note.play();
   }
 }
-//FOR RAPID FIRE PLAYING
+//FOR RAPID FIRE PLAYING - ALLOWS USER TO PLAY SAME NOT OVER AGAIN
 function stopSound(key, sound) {
   if (this.event.keyCode == key) {
     var note = document.getElementsByClassName(sound)[0];

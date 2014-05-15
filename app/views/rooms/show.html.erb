@@ -33,7 +33,7 @@
 </div>
 
 <%= javascript_tag do %>
-  getTracks(<%= @room.id.to_json %>);
-  setInterval(getTracks, 10000, <%= @room.id.to_json %>);
+  getTracks(<%= @room.id %>);
+  setInterval(getTracks, 10000, <%= @room.id %>);
 <% end %>
 
