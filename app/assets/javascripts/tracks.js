@@ -120,7 +120,7 @@ function trackFxn(track, style) {
       var totalTime = calcInts(keyTimePairs);
       playNotes(key, time, track.instrument);
       //ADDED .2 SECONDS TO DECREASE CLUSTERF**K OVERLAP
-      setInterval(playNotes, (totalTime + 200), key, time, track.instrument);
+      setInterval(playNotes, (totalTime + 500), key, time, track.instrument);
     } else if (style == "stop") {
       // context = null;
     }
