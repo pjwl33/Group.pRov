@@ -43,7 +43,7 @@ function addTrack(data) {
   var playButton = $('<i>').addClass('fa fa-play').attr('id', 'play_track_' + data.id);
   var stopButton = $('<i>').addClass('fa fa-stop').attr('id', 'stop_track_' + data.id);
   var loopButton = $('<i>').addClass('fa fa-refresh').attr('id', 'loop_track_' + data.id);
-  var listItem = $('<li>').text("Track #: " + data.id);
+  var listItem = $('<li>').text("Track #" + data.id + ": ");
   playButton.click(trackFxn.bind(this, data, "play"));
   stopButton.click(trackFxn.bind(this, data, "stop"));
   loopButton.click(trackFxn.bind(this, data, "loop"));
@@ -118,9 +118,11 @@ function trackFxn(track, style) {
       playNotes(key, time, track.instrument);
     } else if (style == "loop") {
       var totalTime = calcInts(keyTimePairs);
-      console.log(totalTime);
       playNotes(key, time, track.instrument);
-      setInterval(playNotes, (totalTime + 500), key, time, track.instrument);
+      //ADDED .2 SECONDS TO DECREASE CLUSTERF**K OVERLAP
+      setInterval(playNotes, (totalTime + 200), key, time, track.instrument);
+    } else if (style == "stop") {
+      // context = null;
     }
   }
 }

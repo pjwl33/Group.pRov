@@ -2,8 +2,8 @@
   <h1 class="room-name" id="<%= @room.id %>"><%= @room.name %></h1>
 
   <div id="record-tracks">
-    <button class="button" id="record" onclick="startRecording()">Record</button>
-    <button class="button" id="stop" onclick="stopRecording()">Stop</button>
+    <button class="button" id="record" onclick="startRecording()" disabled>Record</button>
+    <button class="button" id="stop" onclick="stopRecording()" disabled>Stop</button>
   </div>
 
   <ul id="instrument-list">
