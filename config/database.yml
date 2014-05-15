@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: collabo_music_app_production
-  username: collabo_music_app
+  # username: collabo_music_app
   password: <%= ENV['COLLABO_MUSIC_APP_DATABASE_PASSWORD'] %>
