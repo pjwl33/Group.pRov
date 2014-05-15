@@ -15,26 +15,19 @@
 
   <div id="keyboard"></div>
   <div id="sounds"></div>
+  <div id="playbacks"></div>
 </div>
 
 <div class="right_col">
   <div id="contributors">
-    <ul id="user-contributors"><h3>Contributors</h3>
-      <% @users.each do |user| %>
-        <li><%= user.name %></li>
-      <% end %>
+    <h3>Contributors</h3>
+    <ul id="user-contributors">
     </ul>
   </div>
 
   <div id="tracks" class="clear">
-    <ul id="room-tracks"><h3>Tracks</h3>
-      <% @room.tracks.each do |track| %>
-          <li>Track #: <%= track.id %>
-            <i class="fa fa-play" id="play-track_<%= track.id %>" onclick="playTrack(<%= track.to_json %>)"></i>
-            <i class="fa fa-stop" id="stop-track_<%= track.id %>" onclick="stopTrack(<%= track.to_json %>)"></i>
-            <i class="fa fa-refresh" id="loop-track_<%= track.id %>" onclick="loopTrack(<%= track.to_json %>)"></i>
-          </li>
-      <% end %>
+    <h3>Tracks</h3>
+    <ul id="room-tracks">
     </ul>
   </div>
 </div>

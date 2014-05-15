@@ -34,13 +34,10 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    user_ids = @room.tracks.pluck(:user_id).uniq.sort!
-    @users = user_ids.map { |id| User.find(id) }
   end
 
   def get_tracks
-    # binding.pry
-    room = Room.find(params[:id])
+    room = Room.find(params[:room_id])
     user_ids = room.tracks.pluck(:user_id).uniq.sort!
     users = user_ids.map { |id| User.find(id) }
 

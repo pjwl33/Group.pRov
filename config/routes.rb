@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   post '/tracks' => 'tracks#create'
   get '/tracks' => 'tracks#index'
   get '/rooms' => 'rooms#index'
-  get '/get_tracks' => 'rooms#get_tracks'
   get '/rooms/search' => 'rooms#search'
   get '/rooms/:id' => 'rooms#show'
+  get '/get_tracks' => 'rooms#get_tracks'
 
   get '/signout' => 'sessions#destroy', as: 'signout'
 

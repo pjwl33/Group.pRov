@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140510220249) do
   end
 
   create_table "tracks", force: true do |t|
-    t.string   "sequence"
+    t.text     "sequence"
     t.string   "instrument"
     t.integer  "user_id"
     t.integer  "room_id"
