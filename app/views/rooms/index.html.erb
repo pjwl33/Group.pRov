@@ -1,14 +1,12 @@
-<h1>Let's Play!</h1>
-
-<h3>Create Music Room</h3>
+<h2>Create Music Room</h2>
 <%= render "form" %>
 
-<h3>Search Music Room</h3>
+<h2>Search Music Room</h2>
 <%= render "search" %>
 
 <hr noshade>
 
-<h3>Music Rooms Contributed To</h3>
+<h2>Music Rooms Contributed To</h2>
 <ul id="contributed-rooms">
   <% @rooms.each do |room| %>
     <li><%= link_to "#{room.name}", "/rooms/#{room.id}" %></li>

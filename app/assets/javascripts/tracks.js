@@ -120,11 +120,12 @@ function trackFxn(track, style) {
       var totalTime = calcInts(keyTimePairs);
       console.log(totalTime);
       playNotes(key, time, track.instrument);
-      setInterval(playNotes, totalTime, key, time, track.instrument);
+      setInterval(playNotes, (totalTime + 500), key, time, track.instrument);
     }
   }
 }
 
+//CALCULATING TOTAL TIME INTERVAL FOR LOOPING
 function calcInts(pairs) {
   var result = 0;
   for (var i = 0; i < pairs.length; i++) {

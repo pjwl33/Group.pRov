@@ -5,13 +5,12 @@ body {
   color: #333;
 }
 
-h1, h2, h3, h4, {
+h1, h2, h3, {
   color: #8C001A;
 }
 
 .clear { clear:both; }
 .center { text-align: center; }
-.button { border: none; }
 .left_col { width: 680px; float: left; }
 .right_col { width: 250px; float: right; }
 .right { float: right; }
@@ -20,6 +19,8 @@ i { width: 20px; color: #F6FA9C; }
 .wrap { width: 980px; margin: 0 auto; padding-top: 90px; display: table; }
 a { text-decoration: none; color: #8C001A; }
 .footer { position: fixed;}
+input { height: 22px; }
+hr { color: #333}
 
 .fixed_header {
   width: 100%;
@@ -59,6 +60,48 @@ a { text-decoration: none; color: #8C001A; }
     }
   }
 }
+
+.button {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8c001a), color-stop(1, #a63d05) );
+  background:-moz-linear-gradient( center top, #8c001a 5%, #a63d05 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8c001a', endColorstr='#a63d05');
+  background-color:#8c001a;
+  -webkit-border-top-left-radius:20px;
+  -moz-border-radius-topleft:20px;
+  border-top-left-radius:20px;
+  -webkit-border-top-right-radius:20px;
+  -moz-border-radius-topright:20px;
+  border-top-right-radius:20px;
+  -webkit-border-bottom-right-radius:20px;
+  -moz-border-radius-bottomright:20px;
+  border-bottom-right-radius:20px;
+  -webkit-border-bottom-left-radius:20px;
+  -moz-border-radius-bottomleft:20px;
+  border-bottom-left-radius:20px;
+  text-indent:0;
+  border: none;
+  display:inline-block;
+  color:#f5fa9c;
+  font-family:Verdana;
+  font-size:12px;
+  font-weight:bold;
+  font-style:normal;
+  height:36px;
+  line-height:36px;
+  width:131px;
+  text-decoration:none;
+  text-align:center;
+}
+.button:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a63d05), color-stop(1, #8c001a) );
+  background:-moz-linear-gradient( center top, #a63d05 5%, #8c001a 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a63d05', endColorstr='#8c001a');
+  background-color:#a63d05;
+}.button:active {
+  position:relative;
+  top:1px;
+}
+/* This button was generated using CSSButtonGenerator.com */
 
 #keyboard {
   margin-top: 55px;
