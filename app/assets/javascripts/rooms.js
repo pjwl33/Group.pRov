@@ -63,13 +63,13 @@ function instrument(type) {
   startKeyboard();
   var soundFiles;
   if (type == 'piano') {
-    $('.room-name').text($('.room-name').text() + " - Piano");
+    $('.room-name').text($('.room-name').text() + ": Piano - Use the Keyboard!");
     soundFiles = piano;
   } else if (type == 'beats') {
-    $('.room-name').text($('.room-name').text() + " - Beats");
+    $('.room-name').text($('.room-name').text() + ": Beats - Use the Keyboard!");
     soundFiles = beats;
   } else if (type == 'drums') {
-    $('.room-name').text($('.room-name').text() + " - Drums");
+    $('.room-name').text($('.room-name').text() + ": Drums - Use the Keyboard!");
     soundFiles = drums;
   }
   for (i = 0; i < soundFiles.length; i++) {

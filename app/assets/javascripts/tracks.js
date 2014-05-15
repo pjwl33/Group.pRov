@@ -19,7 +19,6 @@ function stopRecording() {
   for (var i = 0; i < sequence.data.length; i++) {
     keyTimes.push([sequence.data[i].which, sequence.data[i].timeStamp]);
   }
-  console.log(keyTimes);
   $.ajax({
     url: '/tracks',
     method: 'POST',
@@ -38,16 +37,16 @@ function stopRecording() {
 }
 
 //ADDING EACH TRACK TO BROWSER WITH PLAY FUNCTIONALITIES
-function addTrack(data) {
+function addTrack(track) {
   var trackList = $('#room-tracks');
-  var playButton = $('<i>').addClass('fa fa-play').attr('id', 'play_track_' + data.id);
-  var stopButton = $('<i>').addClass('fa fa-stop').attr('id', 'stop_track_' + data.id);
-  var loopButton = $('<i>').addClass('fa fa-refresh').attr('id', 'loop_track_' + data.id);
-  var listItem = $('<li>').text("Track #" + data.id + ": ");
-  playButton.click(trackFxn.bind(this, data, "play"));
-  stopButton.click(trackFxn.bind(this, data, "stop"));
-  loopButton.click(trackFxn.bind(this, data, "loop"));
-  if (data.instrument !== null) {
+  var playButton = $('<i>').addClass('fa fa-play').attr('id', 'play_track_' + track.id);
+  var stopButton = $('<i>').addClass('fa fa-stop').attr('id', 'stop_track_' + track.id);
+  var loopButton = $('<i>').addClass('fa fa-refresh').attr('id', 'loop_track_' + track.id);
+  var listItem = $('<li>').text("Track #" + track.id + ": ");
+  playButton.click(trackFxn.bind(this, track, "play"));
+  stopButton.click(trackFxn.bind(this, track, "stop"));
+  loopButton.click(trackFxn.bind(this, track, "loop"));
+  if (track.instrument !== null) {
     trackList.append(listItem.append(playButton).append(stopButton).append(loopButton));
   }
 }
@@ -119,10 +118,10 @@ function trackFxn(track, style) {
     } else if (style == "loop") {
       var totalTime = calcInts(keyTimePairs);
       playNotes(key, time, track.instrument);
-      //ADDED .2 SECONDS TO DECREASE CLUSTERF**K OVERLAP
+      //ADDED .5 SECONDS TO DECREASE CLUSTERF**K OVERLAP
       setInterval(playNotes, (totalTime + 500), key, time, track.instrument);
     } else if (style == "stop") {
-      // context = null;
+      console.log("PLEASE DON'T STOP THE MUSIC, MUSIC!");
     }
   }
 }
