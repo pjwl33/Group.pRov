@@ -1,4 +1,4 @@
-Beat Group.r
+Group.pRov
 =================
 
 **GA WDI Final Project - I made a Rails application (heavy utilization of JavaScript) to allow users to collaborate as a group and play improv music**
