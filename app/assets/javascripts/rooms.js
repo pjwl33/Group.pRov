@@ -58,18 +58,21 @@ function stopSound(key, sound) {
 
 //LOADING APPROPRIATE SOUND FILES FOR INSTRUMENT
 function instrument(type) {
-  $('.button').removeAttr('disabled');
+  $('#record-tracks').append($('<button>').addClass('button').text("Record").click(startRecording));
+  $('#record-tracks').append($('<button>').addClass('button').text("Stop").click(stopRecording));
+  $('#record-tracks').append($('<h3>').text("Use your Keyboard: Horizontally, A-L are the White Keys and Q-P are the Black Keys"));
   $('#instrument-list').remove();
+
   startKeyboard();
   var soundFiles;
   if (type == 'piano') {
-    $('.room-name').text($('.room-name').text() + ": Piano - Use the Keyboard!");
+    $('.room-name').text($('.room-name').text() + ": Piano");
     soundFiles = piano;
   } else if (type == 'beats') {
-    $('.room-name').text($('.room-name').text() + ": Beats - Use the Keyboard!");
+    $('.room-name').text($('.room-name').text() + ": Beats");
     soundFiles = beats;
   } else if (type == 'drums') {
-    $('.room-name').text($('.room-name').text() + ": Drums - Use the Keyboard!");
+    $('.room-name').text($('.room-name').text() + ": Drums");
     soundFiles = drums;
   }
   for (i = 0; i < soundFiles.length; i++) {

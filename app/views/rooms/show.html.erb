@@ -1,17 +1,15 @@
 <div class="left_col">
   <h1 class="room-name" id="<%= @room.id %>"><%= @room.name %></h1>
 
-  <div id="record-tracks">
-    <button class="button" id="record" onclick="startRecording()" disabled>Record</button>
-    <button class="button" id="stop" onclick="stopRecording()" disabled>Stop</button>
-  </div>
-
   <ul id="instrument-list">
     <h3>Select Your Instrument</h3>
     <li><input type="radio" onclick="instrument('piano')">Piano</li>
     <li><input type="radio" onclick="instrument('beats')">Beats</li>
     <li><input type="radio" onclick="instrument('drums')">Drums</li>
   </ul>
+
+  <div id="record-tracks">
+  </div>
 
   <div id="keyboard"></div>
   <div id="sounds"></div>
@@ -28,7 +26,7 @@
   <div id="tracks" class="clear">
     <h3>Tracks</h3>
     <button class="button" id="play-select" onclick="playSelect('play')">All Play</button>
-    <button class="button" id="play-select" onclick="playSelect('loop')">All Loop</button>
+    <button class="button" id="loop-select" onclick="playSelect('loop')">All Loop</button>
     <ul id="room-tracks">
     </ul>
   </div>
