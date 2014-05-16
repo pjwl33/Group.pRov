@@ -55,11 +55,10 @@ function addTrack(track) {
   var trackList = $('#room-tracks');
   // var selectTag = $('<input>').attr('type', 'checkbox').attr('checked', 'checked');
   var playButton = $('<i>').addClass('fa fa-play');
-  var stopButton = $('<i>').addClass('fa fa-stop');
+  var stopButton = $('<a>').attr('href', '/rooms/' + track.room_id).append($('<i>').addClass('fa fa-stop'));
   var loopButton = $('<i>').addClass('fa fa-refresh');
   var listItem = $('<li>').attr('id', 'track_' + track.id).text("Track #" + track.id + ": ");
   playButton.click(trackFxn.bind(this, track, "play"));
-  stopButton.click(trackFxn.bind(this, track, "stop"));
   loopButton.click(trackFxn.bind(this, track, "loop"));
   if (track.instrument !== null) {
     trackList.append(listItem.append(playButton).append(stopButton).append(loopButton));
@@ -79,8 +78,6 @@ function trackFxn(track, style) {
       playNotes(key, time, track.instrument);
       //ADDED .5 SECONDS TO DECREASE CLUSTERF**K OVERLAP
       setInterval(playNotes, (totalTime + 500), key, time, track.instrument);
-    } else if (style == "stop") {
-      console.log("PLEASE DON'T STOP THE MUSIC, MUSIC!");
     }
   }
 }

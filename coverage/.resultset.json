@@ -1,6 +1,52 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/pjwl/Projects/collabo_music_app/spec/controllers/users_controller_spec.rb": [
+        1
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/features/choosing_instrument_spec.rb": [
+
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/features/exporting_group_track_spec.rb": [
+
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/features/facebook_oauth_spec.rb": [
+
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/features/joining_room_spec.rb": [
+
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/features/playing_instrument_spec.rb": [
+
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/features/playing_with_others_spec.rb": [
+
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/features/recent_rooms_spec.rb": [
+
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/features/recording_track_spec.rb": [
+
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/features/room_create_and_search_spec.rb": [
+
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/features/sharing_track_spec.rb": [
+
+      ],
+      "/Users/pjwl/Projects/collabo_music_app/spec/models/room_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        4,
+        null,
+        2,
+        2,
+        2,
+        null,
+        null
+      ],
       "/Users/pjwl/Projects/collabo_music_app/app/models/room.rb": [
         1,
         null,
@@ -75,6 +121,6 @@
         null
       ]
     },
-    "timestamp": 1400174171
+    "timestamp": 1400202749
   }
 }
