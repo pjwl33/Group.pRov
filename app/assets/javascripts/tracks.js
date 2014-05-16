@@ -139,12 +139,14 @@ function calcInts(pairs) {
 }
 
 //PLAYING ALL/SELECTIONS
-function playSelect() {
+function playSelect(style) {
   var roomTracks = $('#room-tracks').children();
   for (var i = 0; i < roomTracks.length; i++) {
-    //IMPLEMENT CHECKBOX FXN
-    if (roomTracks.eq(i).children().eq(3)) {
+    // roomTracks.eq(i).children().eq(3).attr('checked')
+    if (style == 'play') {
       roomTracks.eq(i).children().eq(0).click();
+    } else if (style == 'loop') {
+      roomTracks.eq(i).children().eq(2).click();
     }
   }
 }

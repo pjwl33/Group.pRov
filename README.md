@@ -1,7 +1,7 @@
 Beat Group.r
 =================
 
-GA WDI Final Project - a jam-session room, where users can collaboratively create tracks together, only through submitting user-generated-tracks that the user wants to share
+**GA WDI Final Project - I made a Rails application (heavy utilization of JavaScript) to allow users to collaborate as a group and play improv music**
 
 ---
 
@@ -15,6 +15,19 @@ GA WDI Final Project - a jam-session room, where users can collaboratively creat
 * [Stuart Memo's - QwertyHancock.js](http://stuartmemo.com/qwerty-hancock/)
 * [Chris Wilson's - AudioContext MonkeyPatch.js](https://github.com/cwilso/AudioContext-MonkeyPatch)
 * Underscore.js
+
+####User Stories Completed
+* Users can search a room to join or create one
+* Users can hear other submitted recordings in a room
+* Users can choose their instrument in the room
+* Users can mess around with their instrument without bothering others in the room
+* Users can loop other submitted recordings
+* Users can play all tracks in a room simultaneously
+* Users can loop all tracks in a room simultaneously
+* Users can use their keyboards to play the instruments (mouse click function not yet active)
+* Users can login using Facebook to create an account and don't have to reauthorize every time as long as the Facebook session persists
+* Users can record their own tracks - the room will only record their keystrokes after the record button is pressed
+
 
 ####Entity Relationship Diagram
 ![ERD](http://i.imgur.com/hUSIMd5.jpg)
