@@ -1,3 +1,9 @@
+//STARTING A RECORDING OF KEYPRESS AND TIMESTAMPS
+function startRecording() {
+  console.log("Recording...");
+  document.addEventListener('keydown', sequence);
+}
+
 //RECORDING SEQUENCE DATA OF KEYPRESSES AND TIMESTAMP
 var sequence = function (event) {
   if (event.keyCode >= 65 && event.keyCode <= 89) {
@@ -5,12 +11,6 @@ var sequence = function (event) {
   }
 };
 sequence.data = [];
-
-//STARTING A RECORDING OF KEYPRESS AND TIMESTAMPS
-function startRecording() {
-  console.log("Recording...");
-  document.addEventListener('keydown', sequence);
-}
 
 //CREATING A TRACK SEQUENCE BASED ON KEYPRESS AND TIMESTAMPS
 function stopRecording() {
@@ -36,22 +36,6 @@ function stopRecording() {
   });
 }
 
-//ADDING EACH TRACK TO BROWSER WITH PLAY FUNCTIONALITIES
-function addTrack(track) {
-  var trackList = $('#room-tracks');
-  var selectTag = $('<input>').attr('type', 'checkbox').attr('checked', 'checked');
-  var playButton = $('<i>').addClass('fa fa-play');
-  var stopButton = $('<i>').addClass('fa fa-stop');
-  var loopButton = $('<i>').addClass('fa fa-refresh');
-  var listItem = $('<li>').attr('id', 'track_' + track.id).text("Track #" + track.id + ": ");
-  playButton.click(trackFxn.bind(this, track, "play"));
-  stopButton.click(trackFxn.bind(this, track, "stop"));
-  loopButton.click(trackFxn.bind(this, track, "loop"));
-  if (track.instrument !== null) {
-    trackList.append(listItem.append(playButton).append(stopButton).append(loopButton).append(selectTag));
-  }
-}
-
 //CHECKING PLAYBACK INSTRUMENT TYPE - GLOBAL VARIABLE IN rooms.js
 function instType() {
   var instrument;
@@ -64,6 +48,41 @@ function instType() {
     instrument = "drums";
   }
   return instrument;
+}
+
+//ADDING EACH TRACK TO BROWSER WITH PLAY FUNCTIONALITIES
+function addTrack(track) {
+  var trackList = $('#room-tracks');
+  // var selectTag = $('<input>').attr('type', 'checkbox').attr('checked', 'checked');
+  var playButton = $('<i>').addClass('fa fa-play');
+  var stopButton = $('<i>').addClass('fa fa-stop');
+  var loopButton = $('<i>').addClass('fa fa-refresh');
+  var listItem = $('<li>').attr('id', 'track_' + track.id).text("Track #" + track.id + ": ");
+  playButton.click(trackFxn.bind(this, track, "play"));
+  stopButton.click(trackFxn.bind(this, track, "stop"));
+  loopButton.click(trackFxn.bind(this, track, "loop"));
+  if (track.instrument !== null) {
+    trackList.append(listItem.append(playButton).append(stopButton).append(loopButton));
+  }
+}
+
+//PLAY, STOP, LOOP FUNCTIONS FOR TRACKS
+function trackFxn(track, style) {
+  var keyTimePairs = trackSequence(track);
+  for (var i = 0; i < keyTimePairs.length; i++) {
+    var key = keyTimePairs[i][0];
+    var time = keyTimePairs[i][1] - keyTimePairs[0][1];
+    if (style == "play") {
+      playNotes(key, time, track.instrument);
+    } else if (style == "loop") {
+      var totalTime = calcInts(keyTimePairs);
+      playNotes(key, time, track.instrument);
+      //ADDED .5 SECONDS TO DECREASE CLUSTERF**K OVERLAP
+      setInterval(playNotes, (totalTime + 500), key, time, track.instrument);
+    } else if (style == "stop") {
+      console.log("PLEASE DON'T STOP THE MUSIC, MUSIC!");
+    }
+  }
 }
 
 //SPLITTING JSON DATA INTO TRACK SEQUENCE KEYPRESS, TIMESTAMP ARRAY PAIRS
@@ -80,15 +99,6 @@ function trackSequence(track) {
     }
   }
   return keyTimePairs;
-}
-
-//GETTING APPROPRIATE SOUND FILE SOURCES FOR PLAYBACK
-function getSound(keyValue, instType) {
-  for (var i = 0; i < instType.length; i++) {
-    if (instType[i].key == keyValue) {
-      return instType[i].sound;
-    }
-  }
 }
 
 //PLAYING NOTES BACK ACCORDING TO KEYPRESS AND TIME INTERVAL - NO DURATION ACCOUNTED YET
@@ -108,21 +118,11 @@ function playNotes(key, int, instrument) {
   setTimeout(function() {audio.play();}, int);
 }
 
-//PLAY, STOP, LOOP FUNCTIONS FOR TRACKS
-function trackFxn(track, style) {
-  var keyTimePairs = trackSequence(track);
-  for (var i = 0; i < keyTimePairs.length; i++) {
-    var key = keyTimePairs[i][0];
-    var time = keyTimePairs[i][1] - keyTimePairs[0][1];
-    if (style == "play") {
-      playNotes(key, time, track.instrument);
-    } else if (style == "loop") {
-      var totalTime = calcInts(keyTimePairs);
-      playNotes(key, time, track.instrument);
-      //ADDED .5 SECONDS TO DECREASE CLUSTERF**K OVERLAP
-      setInterval(playNotes, (totalTime + 500), key, time, track.instrument);
-    } else if (style == "stop") {
-      console.log("PLEASE DON'T STOP THE MUSIC, MUSIC!");
+//GETTING APPROPRIATE SOUND FILE SOURCES FOR PLAYBACK
+function getSound(keyValue, instType) {
+  for (var i = 0; i < instType.length; i++) {
+    if (instType[i].key == keyValue) {
+      return instType[i].sound;
     }
   }
 }
