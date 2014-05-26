@@ -57,7 +57,7 @@ function addTrack(track) {
   var playButton = $('<i>').addClass('fa fa-play');
   var stopButton = $('<a>').attr('href', '/rooms/' + track.room_id).append($('<i>').addClass('fa fa-stop'));
   var loopButton = $('<i>').addClass('fa fa-refresh');
-  var listItem = $('<li>').attr('id', 'track_' + track.id).text("Track #" + track.id + ": ");
+  var listItem = $('<li>').attr('id', 'track_' + track.id).text("Track by User #" + track.user_id + ": ");
   playButton.click(trackFxn.bind(this, track, "play"));
   loopButton.click(trackFxn.bind(this, track, "loop"));
   if (track.instrument !== null) {
