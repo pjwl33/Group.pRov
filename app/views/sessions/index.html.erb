@@ -1,8 +1,9 @@
 <h4>NavBar design by <a href="https://github.com/originalblend337">originalblend337</a></h4>
 
 <div class="wrap">
-  <h2 class="home-greet"><%= link_to "Let's Play!", rooms_path %></h2>
-  <figure class="gallery-icon">
-    <%= link_to image_tag("ic_music.png", class: "home-img"), rooms_path %>
-  </figure>
+  <div class="steps"><h2>Step 1: </h2><p>Sign in with <%= link_to "Facebook", "auth/facebook" %></p></div>
+  <div class="steps"><h2>Step 2: </h2><p><%= link_to "Create or Search", rooms_path %> a Music room</p></div>
+  <div class="steps"><h2>Step 3: </h2><p>Choose an instrument and press down on your keyboard to play sounds (you MUST use your keyboard)</p></div>
+  <div class="steps"><h2>Step 4: </h2><p>Click the "Record" button, play a track, then click the "Stop" button - your track should then be successfully saved in the music room!</p></div>
+  <div class="steps"><h2>Step 5: </h2><p>Click <i class="fa fa-play"></i> to Play a track, <i class="fa fa-stop"></i> to Stop all tracks, and <i class="fa fa-refresh"></i> to Loop a track. Click "Play All" or "Loop All" to start all the tracks in the room at the same time. Have fun with friends and the tracks! </p></div>
 </div>
