@@ -54,12 +54,12 @@ function instType() {
 function addTrack(track) {
   var trackList = $('#room-tracks');
   // var selectTag = $('<input>').attr('type', 'checkbox').attr('checked', 'checked');
-  var playButton = $('<i>').addClass('fa fa-play');
+  var playButton = $('<i>').addClass('fa fa-play').attr('id', 'play_' + track.id);
   var stopButton = $('<a>').attr('href', '/rooms/' + track.room_id).append($('<i>').addClass('fa fa-stop'));
-  var loopButton = $('<i>').addClass('fa fa-refresh');
+  var loopButton = $('<i>').addClass('fa fa-refresh').attr('id', 'loop_' + track.id);
   var listItem = $('<li>').attr('id', 'track_' + track.id).text("Track by User #" + track.user_id + ": ");
-  playButton.click(trackFxn.bind(this, track, "play"));
-  loopButton.click(trackFxn.bind(this, track, "loop"));
+  playButton.click(trackFxn.bind(this, track, 'play'));
+  loopButton.click(trackFxn.bind(this, track, 'loop'));
   if (track.instrument !== null) {
     trackList.append(listItem.append(playButton).append(stopButton).append(loopButton));
   }
@@ -68,13 +68,15 @@ function addTrack(track) {
 //PLAY, STOP, LOOP FUNCTIONS FOR TRACKS
 function trackFxn(track, style) {
   var keyTimePairs = trackSequence(track);
+  var totalTime = calcInts(keyTimePairs);
   for (var i = 0; i < keyTimePairs.length; i++) {
     var key = keyTimePairs[i][0];
     var time = keyTimePairs[i][1] - keyTimePairs[0][1];
-    if (style == "play") {
+    if (style == 'play') {
+      var thisPlayButton = $('#play_' + track.id);
       playNotes(key, time, track.instrument);
-    } else if (style == "loop") {
-      var totalTime = calcInts(keyTimePairs);
+    } else if (style == 'loop') {
+      $('#loop_' + track.id).unbind();
       playNotes(key, time, track.instrument);
       //ADDED .5 SECONDS TO DECREASE CLUSTERF**K OVERLAP
       setInterval(playNotes, (totalTime + 500), key, time, track.instrument);
