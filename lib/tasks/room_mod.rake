@@ -5,3 +5,9 @@ task room_destroy: :environment do
     room.destroy
   end
 end
+
+task empty_track: :environment do
+  desc "Creating an empty track"
+  puts "Recording..."
+  Track.create(sequence: "[]", instrument: "piano")
+end
