@@ -12,7 +12,7 @@ class TracksController < ApplicationController
     if track.save
       alert_msg = "Track successfully saved!"
     else
-      alert_msg = "Error saving track - make sure an instrument is selected!"
+      alert_msg = "Error saving track - make sure an instrument is selected and that the track is not empty!"
     end
     return_data = { object: track, user: current_user.name, msg: alert_msg }
 

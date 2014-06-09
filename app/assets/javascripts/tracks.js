@@ -60,7 +60,7 @@ function addTrack(track) {
   var listItem = $('<li>').attr('id', 'track_' + track.id).text("Track by User #" + track.user_id + ": ");
   playButton.click(trackFxn.bind(this, track, 'play'));
   loopButton.click(trackFxn.bind(this, track, 'loop'));
-  if (track.instrument !== null) {
+  if (track.instrument !== null || track.sequence !== '[]') {
     trackList.append(listItem.append(playButton).append(stopButton).append(loopButton));
   }
 }
