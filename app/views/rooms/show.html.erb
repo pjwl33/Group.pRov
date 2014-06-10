@@ -34,6 +34,6 @@
 
 <%= javascript_tag do %>
   getTracks(<%= @room.id %>);
-  setInterval(getTracks, 15000, <%= @room.id %>);
+  setInterval(getTracks, 7000, <%= @room.id %>);
 <% end %>
 

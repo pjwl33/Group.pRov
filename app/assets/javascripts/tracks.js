@@ -1,6 +1,7 @@
 //STARTING A RECORDING OF KEYPRESS AND TIMESTAMPS
 function startRecording() {
   console.log("Recording...");
+  $('#stop-button').prop('disabled', false);
   document.addEventListener('keydown', sequence);
 }
 
@@ -15,6 +16,7 @@ sequence.data = [];
 //CREATING A TRACK SEQUENCE BASED ON KEYPRESS AND TIMESTAMPS
 function stopRecording() {
   console.log("Stopped.");
+  $('#stop-button').prop('disabled', true);
   var keyTimes = [];
   for (var i = 0; i < sequence.data.length; i++) {
     keyTimes.push([sequence.data[i].which, sequence.data[i].timeStamp]);
@@ -53,7 +55,6 @@ function instType() {
 //ADDING EACH TRACK TO BROWSER WITH PLAY FUNCTIONALITIES
 function addTrack(track) {
   var trackList = $('#room-tracks');
-  // var selectTag = $('<input>').attr('type', 'checkbox').attr('checked', 'checked');
   var playButton = $('<i>').addClass('fa fa-play').attr('id', 'play_' + track.id);
   var stopButton = $('<a>').attr('href', '/rooms/' + track.room_id).append($('<i>').addClass('fa fa-stop'));
   var loopButton = $('<i>').addClass('fa fa-refresh').attr('id', 'loop_' + track.id);
